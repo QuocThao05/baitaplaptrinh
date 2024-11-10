@@ -1,0 +1,41 @@
+﻿@model database.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "Customer Home Page";
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css" />
+}
+
+@if (Model.FuturedProducts != null && Model.FuturedProducts.Any())
+{
+    <section class="container-fluid feature-container">
+        <div><h2>Sản phẩm nổi bật</h2></div>
+        <div class="feature-container">
+            @foreach (var product in Model.FuturedProducts)
+            {
+                <div class="fproduct-item">
+                    <div>
+                        <a href="@Url.Action("ProductDetails", "Home", new {id= product.ProductID })">
+                            <img src="@Html.DisplayFor(modelItem => product.ProductImage)" />
+                        </a>
+                    </div>
+                    <div>
+                        <p class="prodPrice">
+                            @Html.DisplayFor(modelItem => product.ProductPrice)
+                        </p>
+                        <p class="prodName">
+                            @Html.DisplayFor(modelItem => product.ProductName)
+                        </p>
+                        <p class="prodCate">
+                            @Html.DisplayFor(modelItem => product.Category.CategoryName)
+                        </p>
+                        <p class="prodSale">
+                            Đã bán: &nbsp; @Html.DisplayFor(modelItem => product.OrderDetails.Count)
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </section>
+    <hr />
+
+}

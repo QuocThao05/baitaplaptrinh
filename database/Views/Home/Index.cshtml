@@ -1,0 +1,33 @@
+﻿@model database.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "Customer Home Page";
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css">
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="container-fluid banner">
+    <div class="banner-content">
+        <h2>Chào mừng đến với Trang bán sản phẩm công nghệ TTHN</h2>
+        <p>Mua sắm trực tuyến với hàng ngàn sản phẩm đa dạng và chất lượng.</p>
+    </div>
+</section>
+
+<section class="container-fluid searchProd">
+    <h2>Tìm kiếm sản phẩm</h2>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <div class="form-group search-container">
+            @Html.TextAreaFor(m => m.SearchTerm, new
+       {
+           @class = "search-input",
+           placehloder = "Nhập tên, mô tả hoặc chúng loại sản phầm"
+       })
+            <button type="submit" class="search-button">Tìm kiếm</button>
+        </div>
+    }
+</section>
+<hr />
+@Html.Partial("PVFeatureProduct", Model)
+
+@Html.Partial("PVNewProduct", Model)
+
+

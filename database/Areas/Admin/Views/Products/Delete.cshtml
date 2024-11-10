@@ -1,0 +1,18 @@
+﻿@model database.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdimLayout.cshtml";
+}
+
+<h2 class="bg-success">XÓA SẢN PHẨM</h2>
+<h4 class="bg-danger">Bạn thực sự muốn xóa sản phẩm này ?</h4>
+@Html.Partial("PVProductInfo", Model)
+<div class="form-group">
+    <div class="col-md-offset-4 col-md-8">
+        @Html.ActionLink("Xóa", "Delete", new { id = Model.CategoryID },
+          new { @class = "btn btn-primary " })
+        @Html.ActionLink("Quay Lại Danh Sách", "Index", null,
+        new { @class = "btn btn-primary " })
+    </div>
+</div>

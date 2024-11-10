@@ -1,0 +1,40 @@
+﻿@model database.Models.Product
+
+<head>
+    <style>
+        img {
+            height: 250px;
+            max-height: 250px;
+        }
+    </style>
+</head>
+<div class="container-fluid ">
+    <div class="dl-horizontal">
+        <div class="col-md-4">
+            <img src="@Html.DisplayFor(model => model.ProductImage)" />
+        </div>
+        <div class="col-md-8">
+            <dl>
+                <dt>Tên Sản Phẩm</dt>
+                <dd>@Html.DisplayFor(model => model.ProductName)</dd>
+
+                <dt>Mô Tả</dt>
+                <dd>@Html.DisplayFor(model => model.ProductDecription)</dd>
+
+                <dt>Đơn Giá</dt>
+                <dd>@Html.DisplayFor(model => model.ProductPrice)</dd>
+
+                <dt>Danh Mục</dt>
+                <dd>@Html.DisplayFor(model => model.Category.CategoryName)</dd>
+
+                <dt style="padding:5px"></dt>
+                <dd></dd>
+
+                <dt></dt>
+
+            </dl>
+
+        </div>
+
+    </div>
+</div>

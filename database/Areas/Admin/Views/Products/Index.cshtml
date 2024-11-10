@@ -1,0 +1,84 @@
+﻿@model database.Models.ViewModel.ProductSearchVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdimLayout.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .search-container {
+            padding-top: 20px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+           
+    </style>
+</head>
+
+<body>
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get)) 
+    {
+                <div class="form-group search-container">
+                    @Html.TextBoxFor(m => m.SearchTerm, new
+               {
+                   @class = "form-control",
+                   placeholder = "Nhập tên, mô tả hoặc chủng loại sản phầm"
+               })
+
+                    @Html.TextBoxFor(m => m.MinPrice, new
+               {
+                   @class = "form-control",
+                   placeholder = "Nhập giá tối thiểu",
+                   type = "number"
+               })
+
+                    @Html.TextBoxFor(m => m.MaxPrice, new
+                    {
+                    @class = "form-control",
+                    placeholder = "Nhập giá tối đa",
+                    type = "number"
+                    })
+
+                    <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+                </div>
+                <div class="form-group order-container">
+                    Sắp sếp theo:
+                    @Html.ActionLink("Tên tăng dần", "Index", "Products",
+                   new
+                        {
+                            sortOder = "name_asc",
+                   searchTerm = Model.SearchTerm,
+                   minPrice = Model.MinPrice,
+                   maxPrice = Model.MaxPrice
+                      },
+                   null)|
+                    @Html.ActionLink("Tên giảm dần", "Index", "Products",
+                    new
+                         {
+                             sortOder = "name_dasc",
+                    searchTerm = Model.SearchTerm,
+                    minPrice = Model.MinPrice,
+                    maxPrice = Model.MaxPrice
+                       },
+                    null)|
+                    @Html.ActionLink("Giá tăng dần", "Index", "Products",
+                    new
+                    {sortOder = "Price_asc",
+                    searchTerm = Model.SearchTerm,
+                    minPrice = Model.MinPrice,
+                    maxPrice = Model.MaxPrice
+                       },
+                    null)|
+                    @Html.ActionLink("Giá giảm dần", "Index", "Products",
+                    new{sortOder = "Price_dasc",
+                    searchTerm = Model.SearchTerm,
+                    minPrice = Model.MinPrice,
+                    maxPrice = Model.MaxPrice
+                       },
+                    null)|
+
+                </div>
+            }
+    @Html.Partial("PVListProduct", Model)
+</body>

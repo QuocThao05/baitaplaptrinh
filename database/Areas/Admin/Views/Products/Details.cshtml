@@ -1,0 +1,19 @@
+﻿@model database.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdimLayout.cshtml";
+}
+
+<h2 class="bg-success">CHI TIẾT SẢN PHẨM</h2>
+
+@Html.Partial("PVProductInfo", Model)
+<div class="form-group">
+    <div class="col-md-offset-4 col-md-8">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.ProductID },
+          new { @class = "btn btn-primary " })
+        @Html.ActionLink("Quay Lại Danh Sách", "Index",null,
+        new { @class = "btn btn-primary " })
+    </div>
+</div>
+

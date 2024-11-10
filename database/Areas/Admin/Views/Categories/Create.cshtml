@@ -1,0 +1,29 @@
+﻿@model database.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/AdimLayout.cshtml";
+}
+
+<h2 class="bg-success">Thêm Danh Mục</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    @* Nhúng Partial View vào form cha*@
+        @Html.Partial("PVCreateEditCategory", Model)
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
